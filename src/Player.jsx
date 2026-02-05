@@ -5,6 +5,9 @@ import { useState, useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import useGame from './stores/useGame.jsx'
 
+const cameraPosition = new THREE.Vector3()
+const cameraTarget = new THREE.Vector3()
+
 export default function Player()
 {
     const body = useRef()
@@ -118,12 +121,10 @@ export default function Player()
          */
         const bodyPosition = body.current.translation()
     
-        const cameraPosition = new THREE.Vector3()
         cameraPosition.copy(bodyPosition)
         cameraPosition.z += 2.25
         cameraPosition.y += 0.65
 
-        const cameraTarget = new THREE.Vector3()
         cameraTarget.copy(bodyPosition)
         cameraTarget.y += 0.25
 
